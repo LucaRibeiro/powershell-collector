@@ -1,24 +1,4 @@
-<#
-
-    .SYNOPSIS
-   
-
-    .DESCRIPTION
-
-    .PARAMETER
-
-    .EXAMPLE
-    Use this from an elevated powershell prompt on a site server
-    .NOTES
-    Author: Morten Rønborg
-    Date: 30-01-2018
-    Last Updated: 02-02-2019
-    https://www.mroenborg.com/
-
-#>
-################################################
 #requires -RunAsAdministrator
-
 
 #Define variables
 $ReportExportPath = $PSScriptRoot
