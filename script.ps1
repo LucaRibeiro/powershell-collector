@@ -3,20 +3,22 @@ $PastaCompartilhada = Get-Location
 # Informações sobre as máquinas 
 $HostName = ${env:COMPUTERNAME}
 $User = ${env:USERNAME}
-$IPList = ''
+$IPList = '`n'
 $AllIP = Get-NetIPAddress -AddressFamily IPv4
 $AllIP  | ForEach-Object {
-    if ($_.PrefixOrigin -ne "WellKnow" -and $_.InterfaceAlias -notlike "*WSL*" -and $_.InterfaceAlias -notlike "*VM*") {
-        $IPList += $_.InterfaceAlias + ': ' + $_.IPAddress + '; ' 
+    if ($_.PrefixOrigin -ne "WellKnow") {
+        $IPList += $_.InterfaceAlias + ": " + $_.IPAddress + "`n"
     }
 }
+
 # Nome do sistema operacional
 try {
     $OS = (Get-ComputerInfo -Property OSName -ErrorAction Stop).OSName 
 }
 catch {
     $OS = ((Get-WmiObject Win32_OperatingSystem).Name).split('|')[0]
-}   
+}  
+ 
 # Informações sobre o Antivírus
 #try {
 #    $EndpointSecurity = 'Defender'
@@ -98,7 +100,7 @@ $Ouptut = [PSCustomObject]@{
 }
 
 # Escreve a saída no terminal
-# Write-Output $Ouptut
+Write-Output $Ouptut
 
 # Escreve a saída no arquivo 'defender.csv' no caminho de saída
 Export-Csv -InputObject $Ouptut -LiteralPath "$PastaCompartilhada\defender.csv" -Append -NoTypeInformation 
