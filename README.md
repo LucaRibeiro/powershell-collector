@@ -1,5 +1,3 @@
-# TO-DO
-- Nível de conformidade de aplicação dos patchs do Windows
-- Nível de conformidade da atualização das vacinas do antivírus
-- % de equipamentos gerenciados e não gerenciados pelo SCCM
-- Versão dos Sistemas Operacionais e suas quantidades
+# Defender Health Checker
+
+Migrate to [Powerful Powershell Scripts](https://github.com/luca-regne/powerful-powershell-scripts) project.
